@@ -181,7 +181,7 @@ with tabs[0]:
                 vals = pd.to_numeric(df[n].astype(str).str.replace(",",""), errors="coerce")
                 labels = df[cats[0]].astype(str) if cats else df.index.astype(str)
                 fig = px.bar(x=labels[:50], y=vals[:50], title=f"Phân phối — {n}")
-                fig.update_traces(marker_color=TEAL+"88", marker_line_color=TEAL, marker_line_width=1)
+                fig.update_traces(marker_color="rgba(45,212,191,0.53)", marker_line_color=TEAL, marker_line_width=1)
                 st.plotly_chart(plotly_fig(fig), use_container_width=True)
 
         with c2:
@@ -191,7 +191,7 @@ with tabs[0]:
                 labels = df[cats[0]].astype(str) if cats else df.index.astype(str)
                 fig = px.line(x=labels[:50], y=vals[:50], title=f"Xu hướng — {n}")
                 fig.update_traces(line_color=COLORS[1], line_width=2)
-                fig.update_traces(fill="tozeroy", fillcolor=COLORS[1]+"22")
+                fig.update_traces(fill="tozeroy", fillcolor="rgba(96,165,250,0.13)")
                 st.plotly_chart(plotly_fig(fig), use_container_width=True)
 
         # Auto insights
@@ -269,11 +269,11 @@ with tabs[1]:
             c1, c2 = st.columns(2)
             with c1:
                 fig = px.bar(x=labels[:40], y=get_num(rev_col)[:40], title=f"Doanh thu ({rev_col})")
-                fig.update_traces(marker_color=TEAL+"66", marker_line_color=TEAL, marker_line_width=1.5)
+                fig.update_traces(marker_color="rgba(45,212,191,0.40)", marker_line_color=TEAL, marker_line_width=1.5)
                 st.plotly_chart(plotly_fig(fig), use_container_width=True)
             with c2:
                 fig = px.line(x=labels[:40], y=margin[:40], title="Biên lợi nhuận (%)")
-                fig.update_traces(line_color=COLORS[3], line_width=2, fill="tozeroy", fillcolor=COLORS[3]+"22")
+                fig.update_traces(line_color=COLORS[3], line_width=2, fill="tozeroy", fillcolor="rgba(52,211,153,0.13)")
                 fig.add_hline(y=0, line_dash="dash", line_color="#f87171", line_width=1)
                 st.plotly_chart(plotly_fig(fig), use_container_width=True)
 
@@ -286,7 +286,7 @@ with tabs[1]:
                 mx = v.max()
                 radar_vals.append(round(v.mean()/mx*100, 1) if mx else 0)
             fig = go.Figure(go.Scatterpolar(r=radar_vals+[radar_vals[0]], theta=radar_cols+[radar_cols[0]],
-                fill="toself", fillcolor=TEAL+"33", line_color=TEAL))
+                fill="toself", fillcolor="rgba(45,212,191,0.20)", line_color=TEAL))
             fig.update_layout(**{**PLOTLY_LAYOUT, "polar": dict(
                 radialaxis=dict(visible=True, range=[0,100], gridcolor=GRID, tickfont=dict(size=9), color=TEXT_COLOR),
                 angularaxis=dict(gridcolor=GRID, tickfont=dict(size=10), color=TEXT_COLOR),
