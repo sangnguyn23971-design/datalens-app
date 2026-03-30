@@ -435,7 +435,8 @@ if len(x_vals) > 1:
         y=p(x_line),
         mode="lines",
         name="Trendline",
-        line=dict(color="#f59e0b", width=2, dash="dash")))
+        line=dict(color="#f59e0b", width=2, dash="dash")
+    ))
                     st.plotly_chart(plotly_fig(fig), use_container_width=True)
                 with c2:
                     # CV bar chart
