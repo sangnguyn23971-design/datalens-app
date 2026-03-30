@@ -422,8 +422,10 @@ with tabs[3]:
                     corr_df = pd.DataFrame({nums[0]: v1, nums[1]: v2}).dropna()
                     r = pearson(corr_df[nums[0]].tolist(), corr_df[nums[1]].tolist())
                     fig = px.scatter(corr_df, x=nums[0], y=nums[1],
+fig = px.scatter(corr_df, x=nums[0], y=nums[1],
     title=f"Tương quan r={r:.2f}",
     color_discrete_sequence=[TEAL])
+
 x_vals = corr_df[nums[0]].dropna().values
 y_vals = corr_df[nums[1]].dropna().values
 if len(x_vals) > 1:
